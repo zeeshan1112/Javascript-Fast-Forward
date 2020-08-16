@@ -1,12 +1,12 @@
 **Table of Contents**
 
-- [Javascript: Patterns](#heading)
-    * [Creational Patterns](#sub-heading)
-        + [Class Design Pattern](#sub-sub-heading)
-        + [Constructor Pattern](#sub-sub-heading)
-        + [Singleton Pattern](#sub-sub-heading)
-        + [Factory Pattern](#sub-sub-heading)
-        + [Abstract Factory Pattern](#sub-sub-heading)
+- [Javascript: Patterns](#Javascript:%20Patterns)
+    * [Creational Patterns](#Creational-Patterns)
+        + [Class Design Pattern](#Class-Design-Pattern)
+        + [Constructor Pattern](#Constructor-Pattern)
+        + [Singleton Pattern](#Singleton-Pattern)
+        + [Factory Pattern](#Factory-Pattern)
+        + [Abstract Factory Pattern](#Abstract-Factory-Pattern)
 
 # Javascript: Patterns
 
