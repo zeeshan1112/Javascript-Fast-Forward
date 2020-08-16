@@ -1,3 +1,13 @@
+**Table of Contents**
+
+- [Javascript: Patterns](#heading)
+    * [Creational Patterns](#sub-heading)
+        + [Class Design Pattern](#sub-sub-heading)
+        + [Constructor Pattern](#sub-sub-heading)
+        + [Singleton Pattern](#sub-sub-heading)
+        + [Factory Pattern](#sub-sub-heading)
+        + [Abstract Factory Pattern](#sub-sub-heading)
+
 # Javascript: Patterns
 
 The academic definition is a general, reusable solution to a commonly occurring problem within a given context in software design.
