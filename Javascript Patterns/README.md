@@ -1,6 +1,6 @@
 **Table of Contents**
 
-- [Javascript: Patterns](#Javascript:%20Patterns)
+- [Javascript: Patterns](#Javascript:-Patterns)
     * [Creational Patterns](#Creational-Patterns)
         + [Class Design Pattern](#Class-Design-Pattern)
         + [Constructor Pattern](#Constructor-Pattern)
@@ -16,6 +16,15 @@
         + [Model-View-Controller Pattern](#Model-View-Controller-Pattern)
         + [Model-View-Presenter Pattern](#Model-View-Presenter-Pattern)
         + [Model-View-ViewModel Pattern](#Model-View-ViewModel-Pattern)
+    * [Behavioral Patterns](#Behavioral-Patterns)
+        + [Observer Pattern](#Observer-Pattern)
+        + [State Pattern](#State-Pattern)
+        + [Chain of Responsibility](#Chain-of-Responsibility)
+        + [Iterator Pattern](#Iterator-Pattern)
+        + [Strategy Pattern](#Strategy-Pattern)
+        + [Memento Pattern](#Memento-Pattern)
+        + [Mediator Pattern](#Mediator-Pattern)
+        + [Command Pattern](#Command-Pattern)
 
 # Javascript: Patterns
 
@@ -279,3 +288,155 @@ The Model-View-Presenter pattern, which is loosely based on MVC, and almost the 
 ### Model-View-ViewModel Pattern
 The model view view model pattern is similar than the other two we just explored, and is different only in implementation again. It is also sometimes referred to as MVVC, or model view view controller. But in both cases, it serves the same purpose. The first view is your view which doesn't have any data or logic. Then you have the second view, model, which holds the logic in a state of the data, and this view model connects to a model. 
 
+## Behavioral Patterns
+* Focussed on the communication between objects
+* Similar to implementing better communication between us.
+* Some examples will be shown and not implemented due to complexity.
+
+### Observer Pattern
+The Observer pattern is one where we maintain a list of objects based on events, and is typically done with updating data based on these events.
+
+Example:
+```javascript
+class Car {
+    constructor(gas) {
+        this.gas = gas;
+    }
+
+    setGasLevel(val) {
+        this.gas = val;
+        this.notifyAll();
+    }
+
+    register(observer) {
+        this.actions.push(observer);
+    }
+
+    unregister(observer) {
+        this.actions.remove.filter(function(el) {
+            return el !== observer;
+        });
+    }
+
+    notifyAll() {
+        return this.actions.forEach(function(el) {
+            el.update(this);
+        }.bind(this));
+    }
+}
+
+class consumption {
+    update(car) {
+        car.gas = car.gas + 1;
+    }
+}
+```
+So basically this observer pattern is a way to publish information or objects or collections that we have access to, and then we can subscribe to it, or get that information from the observer, and then have access to all the information available for rooms or players or whatever is the data that you're working with.
+
+### State Pattern
+The state pattern is one where we hold the state of the application with all the data and properties needed and when it changes it updates a rendering of the application.
+
+Example:
+ If you were to use a chat application, where whenever a true statement turns the color of the fonts of your chat red because somebody is talking to you or typing something well that's a state of the application, and we need data to actually make that happen with the application, and this is how it works, so you have the state, which holds all of the information that you need and then the application reacts based on that, or get the data from the state. So this is what the state pattern is.
+
+###  Chain of Responsibility
+The Chain of Responsibility is a pattern to help solve common practical issues of having a request from a client and needing this request to pass through multiple functions or logic to get the result.
+
+Example:
+When we hit the Buy button, then the application needs to check if you're logged in, then needs to check if it has your address. If not, add an address. Then it needs to calculate the taxes, shipping, process payment, and finally process the order, and display success message.
+So this is where the chain of responsibility comes into play and where we need to create a proper chain so these events occur in a linear way. What we end up with is a request going through an abstract handler which calls one function or handler after another until the chain is completed. When one handler is completed, we can go to the next one. If there are errors, the abstract handler can provide error information to the back end end client, and so on and so forth.
+
+### Iterator Pattern
+The iterator pattern is another method of iterating through list of items, whereas the chain of responsibility will use more of a handler type and go through a chain. The iterator is best used with a for loop and is perfect when you want to iterate through rays of objects.
+
+Example:
+```javascript
+newsfeeds = [
+    {
+      type: 'top-headlines',
+      query: 'sources=bbc-news'
+    },
+    {
+      type: 'everything',
+      query: 'domains=techcrunch.com&language=en'
+    },
+    {
+      type: 'technology',
+      query: 'domains=comicbookmovie.com&language=en'
+    }
+]
+
+for (let feed of newsfeeds) {
+    console.log(feed.type);
+}
+```
+
+### Strategy Pattern
+The strategy pattern is basically a way to encapsulate different algorithms or functions and then at runtime practically use the same code to run different scenarios.
+
+Example:
+```javascript
+class Car {
+    constructor(doors, engine, color) {
+        this.doors = doors;
+        this.engine = engine;
+        this.color = color;
+    }
+}
+
+class SUV extends Car {
+    constructor(doors, engine, color) {
+        super(doors, engine, color);
+        this.wheels = 4;
+    }
+}
+
+
+const civic = new Car(4, 'V6', 'grey');
+const cx5 = new SUV(4, "V8", 'red');
+
+console.log(civic);
+console.log(cx5);
+```
+We're encapsulating code by creating a class, or it could be a function, or it could be anything. And then we're reusing that code multiple times to create new cars or new objects of these cars.
+
+### Memento Pattern
+ The memento pattern is basically providing temporary state of an object and restoration of that object from a conversion into a different format or whatnot. It is often used into serialization and deserialization of data
+
+ Example:
+ We serialize javascript object to a JSON object for streaming it through HTTP protocols and while receving the response, we might need to deserialize the JSON object back into a JavaScript object for consumption into our application. Well, this is basically the memento pattern in action, where the data never loses its accuracy, despite several conversions in between formats.
+
+ ### Mediator Pattern
+ The mediator pattern provides a set of objects which interact with each other, mostly by having a central authority dictating the terms in between objects.
+
+ Example:
+ ```javascript
+ class TrafficTower {
+    constructor() {
+        this.airplanes = [];
+    }
+
+    requestPositions() {
+        return this.airplanes.map(airplane => {
+            return airplane.position;
+        });
+    }
+}
+
+class Airplane{
+    constructor(position, trafficTower) {
+        this.position = position;
+        this.trafficTower = trafficTower;
+        this.trafficTower.airplanes.push(this);
+    }
+
+    requestPositions() {
+        return this.trafficTower.requestPositions();
+    }
+}
+ ```
+
+ The mediator pattern provides a set of objects which interact with each other, mostly by having a central authority dictating the terms in between objects.
+
+### Command Pattern
+The command pattern is one that encapsulates actions or operations as objects. So in other words, in this pattern you abstract the actual function or execution of the action from the action itself.
